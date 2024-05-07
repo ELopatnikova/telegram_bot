@@ -1,0 +1,1 @@
+secrets = {'BOT_API_TOKEN': '7062105451:AAEzx21-UAkOEqBDwMuxq9y9eb5LHL-YqTo'}
