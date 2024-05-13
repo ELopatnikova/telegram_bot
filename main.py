@@ -1,5 +1,6 @@
 import telebot # Импортируем telebot
 import telegram
+import random
 from telebot import types # для определения типов
 from secrets import secrets # импортируем словарь с токеном из файла secrets.py
 
@@ -12,10 +13,18 @@ bot = telebot.TeleBot(token)
 def start_message(message):
     bot.send_message(message.chat.id, "Здорова, отец")
 
-# отправка фото
-@bot.message_handler(commands=['elenka', 'Elenka', 'lena_lopa', 'lena', 'Лена', 'лена'])
+# отправка фото Лены
+@bot.message_handler(commands=['elenka', 'Elenka', 'lena_lopa', 'lena'])
 def name_message(message):
-    photo_path = './photos/elenka.jpg'
+    rand = random.randint(0,6)
+    photo_path = './photos/elenka' + str(rand) + '.jpg'
+    bot.send_photo(message.chat.id, open(photo_path, 'rb'))
+
+# отправка фото Эдика
+@bot.message_handler(commands=['edik', 'Edik', 'ed', 'Ed', 'vash_ed'])
+def name_message(message):
+    rand = random.randint(0,3)
+    photo_path = './photos/edik' + str(rand) + '.jpg'
     bot.send_photo(message.chat.id, open(photo_path, 'rb'))
 
 # бесконечное выполнение кода
